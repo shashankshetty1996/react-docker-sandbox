@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+RUN mkdir src/config && cd src/config
+
+CMD ["npm", "run", "start"]

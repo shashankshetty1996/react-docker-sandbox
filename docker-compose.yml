@@ -1,0 +1,25 @@
+version: '3'
+services:
+  dev:
+    container_name: docker_react_dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" 
+    environment:
+      NODE_ENV: dev
+    volumes:
+      - /app/node_modules
+      - .:/app/
+
+  prod:
+    container_name: docker_react_prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:80"
+    volumes:
+      - /app/node_modules
+      - .:/app/
